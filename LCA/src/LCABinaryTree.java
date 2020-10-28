@@ -1,4 +1,4 @@
-public class BinaryTree 
+public class LCABinaryTree 
 { 
 	public static class Node 
 	{ 
