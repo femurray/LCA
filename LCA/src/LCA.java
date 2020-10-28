@@ -1,69 +1,89 @@
-// Recursive Java program to print lca of two nodes 
-
-// A binary tree node 
-class Node 
+public class BinaryTree 
 { 
-	int data; 
-	Node left, right; 
-
-	Node(int item) 
+	public static class Node 
 	{ 
-		data = item; 
-		left = right = null; 
-	} 
-} 
+		int data; 
+		Node left, right; 
 
-class BinaryTree 
-{ 
+		Node(int item) 
+		{ 
+			data = item; 
+			left = right = null; 
+		} 
+	} 
+
 	Node root; 
 	
 	/* Function to find LCA of n1 and n2. The function assumes that both 
 	n1 and n2 are present in BST */
-	Node lca(Node node, int n1, int n2) 
+	Node lca(Node root, int n1, int n2) 
 	{ 
-		if (node == null) 
+		if (root == null) 
 			return null; 
 
 		// If both n1 and n2 are smaller than root, then LCA lies in left 
-		if (node.data > n1 && node.data > n2) 
-			return lca(node.left, n1, n2); 
+		if (root.data > n1 && root.data > n2) 
+			return lca(root.left, n1, n2); 
 
 		// If both n1 and n2 are greater than root, then LCA lies in right 
-		if (node.data < n1 && node.data < n2) 
-			return lca(node.right, n1, n2); 
+		if (root.data < n1 && root.data < n2) 
+			return lca(root.right, n1, n2); 
 
-		return node; 
+		return root; 
 	} 
+	
+	 /*public static void main(String args[])  
+	    { 
+	        // Let us construct the BST shown in the above figure 
+	        BinaryTree tree = new BinaryTree(); 
+	    }    */
+	
+	public static void main(String[] args)
+	{
+		// Creating a binary tree
+		Node root=createBinaryTree();
+		System.out.println("Lowest common ancestor for node 5 and 30:");
+		Node node5=new Node(5);
+		Node node30=new Node(30);
 
-	/* Driver program to test lca() */
-	public static void main(String args[]) 
-	{ 
-		// Let us construct the BST shown in the above figure 
-		BinaryTree tree = new BinaryTree(); 
-		tree.root = new Node(20); 
-		tree.root.left = new Node(8); 
-		tree.root.right = new Node(22); 
-		tree.root.left.left = new Node(4); 
-		tree.root.left.right = new Node(12); 
-		tree.root.left.right.left = new Node(10); 
-		tree.root.left.right.right = new Node(14); 
+	}
 
-		int n1 = 10, n2 = 14; 
-		Node t = tree.lca(tree.root, n1, n2); 
-		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
+	public static Node createBinaryTree()
+	{
 
-		n1 = 14; 
-		n2 = 8; 
-		t = tree.lca(tree.root, n1, n2); 
-		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
+		Node rootNode =new Node(40);
+		Node node20=new Node(20);
+		Node node10=new Node(10);
+		Node node30=new Node(30);
+		Node node60=new Node(60);
+		Node node50=new Node(50);
+		Node node70=new Node(70);
+		Node node5=new Node(5);
+		Node node45=new Node(45);
+		Node node55=new Node(55);
 
-		n1 = 10; 
-		n2 = 22; 
-		t = tree.lca(tree.root, n1, n2); 
-		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
+		rootNode.left=node20;
+		rootNode.right=node60;
 
-	} 
-} 
+		node20.left=node10;
+		node20.right=node30;
 
-// This code has been contributed by Mayank Jaiswal 
+		node60.left=node50;
+		node60.right=node70;
+
+		node10.left=node5;
+		node50.right=node55;
+		return rootNode;
+	}
+
+	public static String printNode (Node node)
+	{
+		if (node == null) return "";
+		else if (node.left == null && node.right == null)
+			return "" + Integer.toString(node.data);
+		else return "" + printNode(node.left) + Integer.toString(node.data) + printNode(node.right);					
+	}	
+}	
+
+
 
