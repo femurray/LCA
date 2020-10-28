@@ -4,13 +4,13 @@ import org.junit.Test;
 
 public class LowestCommonAncestorTest{
 
-	//1. Insures null is returned if we are asked to find the LCA of an empty Binary Tree
+	//1. Ensures null is returned if we are asked to find the LCA of an empty Binary Tree
 	@Test
 	public void testIfEmpty()
 	{
 		BinaryTree tree = new BinaryTree();
 		
-		assertNull(null, tree.findLCA(0, 0));
+		assertNull(tree.findLCA(0, 0));
 	}
 
 	//2. Testing the '.right' method is working correctly
@@ -38,10 +38,9 @@ public class LowestCommonAncestorTest{
 		tree.root.left.left.left = new Node(8);
 		
 		assertEquals(2, tree.findLCA(2, 5).data); 
-		
 	}
 
-	//4. Testing other random LCA scenarios
+	//4. Testing LCA scenarios
 	@Test
 	public void testLCAfunction()
 	{
