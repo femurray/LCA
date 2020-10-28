@@ -4,30 +4,23 @@ import org.junit.Test;
 
 public class LCABinaryTreeTest {
 
-	//idk what point of @test is - find out
+	public static void main(String[] args)
+	{
+		LCABinaryTree.Node testNode = LCABinaryTree.createBinaryTree();
+	}
+	
+	@Test
 	public void testLCAOutput() 
-	{  
-		BinaryTree tree = new BinaryTree(); 
-		tree.root = new Node(1); 
-		tree.root.left = new Node(2); 
-		tree.root.right = new Node(3); 
-		tree.root.left.left = new Node(4); 
-		tree.root.left.right = new Node(5); 
-		tree.root.left.right.left = new Node(6); 
-		tree.root.left.right.right = new Node(7); 
-	
-		int n1 = tree.root.left.data, n2 = tree.root.right.data;
-				
-		Node testNode = tree.lca(tree.root, n1, n2);
-	
+	{  				
+		LCABinaryTree.Node testNode = LCABinaryTree.createBinaryTree();
 		assertEquals(1, testNode.data);
 	} 
 	
-	public void testNull()
+	/*public void testNull()
 	{
-		BinaryTree tree = new BinaryTree();
+		LCABinaryTree tree = new LCABinaryTree();
 		
-		int n1 = 2, n2 = 3;
+		int Node = 2, n2 = 3;
 		
 		assertNull(tree.lca(null, n1, n2));
 	}
@@ -42,5 +35,5 @@ public class LCABinaryTreeTest {
 	//}
 	
 	
-	
+	*/
 } 

@@ -12,68 +12,47 @@ public class LCABinaryTree
 		} 
 	} 
 
-	Node root; 
+	 
 	
-	/* Function to find LCA of n1 and n2. The function assumes that both 
-	n1 and n2 are present in BST */
-	Node lca(Node root, int n1, int n2) 
-	{ 
-		if (root == null) 
-			return null; 
-
-		// If both n1 and n2 are smaller than root, then LCA lies in left 
-		if (root.data > n1 && root.data > n2) 
-			return lca(root.left, n1, n2); 
-
-		// If both n1 and n2 are greater than root, then LCA lies in right 
-		if (root.data < n1 && root.data < n2) 
-			return lca(root.right, n1, n2); 
-
-		return root; 
-	} 
-	
-	 /*public static void main(String args[])  
-	    { 
-	        // Let us construct the BST shown in the above figure 
-	        BinaryTree tree = new BinaryTree(); 
-	    }    */
+	public static Node lca(Node root, Node a, Node b) {
+		if(root == null)
+			return null;
+		if(root.data == a.data || root.data == b.data )
+			return root;
+ 
+		Node left=lca(root.left,a,b);
+		Node right=lca(root.right,a,b);
+ 
+		// If we get left and right not null , it is lca for a and b
+		if(left!=null && right!=null)
+			return root;
+		if(left== null)
+			return right;
+		else
+			return left;
+	}
 	
 	public static void main(String[] args)
 	{
 		// Creating a binary tree
 		Node root=createBinaryTree();
-		System.out.println("Lowest common ancestor for node 5 and 30:");
-		Node node5=new Node(5);
-		Node node30=new Node(30);
-
+		System.out.println("Lowest common ancestor for nodes with values 2 and 3:");
+		Node node2=new Node(2);
+		Node node3=new Node(3);
+		System.out.println(lca(root,node2,node3).data);
+ 
 	}
 
 	public static Node createBinaryTree()
 	{
-
-		Node rootNode =new Node(40);
-		Node node20=new Node(20);
-		Node node10=new Node(10);
-		Node node30=new Node(30);
-		Node node60=new Node(60);
-		Node node50=new Node(50);
-		Node node70=new Node(70);
-		Node node5=new Node(5);
-		Node node45=new Node(45);
-		Node node55=new Node(55);
-
-		rootNode.left=node20;
-		rootNode.right=node60;
-
-		node20.left=node10;
-		node20.right=node30;
-
-		node60.left=node50;
-		node60.right=node70;
-
-		node10.left=node5;
-		node50.right=node55;
-		return rootNode;
+		Node root = new Node(1); 
+		root.left = new Node(2); 
+		root.right = new Node(3); 
+		root.left.left = new Node(4); 
+		root.left.right = new Node(5); 
+		root.left.right.left = new Node(6); 
+		root.left.right.right = new Node(7); 
+		return root;
 	}
 
 	public static String printNode (Node node)
