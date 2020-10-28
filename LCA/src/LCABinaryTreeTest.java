@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class LCATest {
+public class LCABinaryTreeTest {
 
 	//idk what point of @test is - find out
 	public void testLCAOutput() 
