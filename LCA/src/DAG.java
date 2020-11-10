@@ -125,4 +125,23 @@ public class DAG {
 		stack[v] = false;
 	} 
 	
+	//Method to implement lowest common ancestor
+	public int findLCA(int v, int w)
+	{
+		return -1;
+	}
+
+	//Prints BFS(Breadth-Frist search) from source s
+	public ArrayList<Integer> BFS(int s)
+	{
+		ArrayList<Integer> order = new ArrayList<Integer>();
+		return order;
+	}
+
+	//Reverse DAG
+	public DAG reverse()
+	{
+		DAG reverse = new DAG(V);
+		return reverse;
+	}
 }
