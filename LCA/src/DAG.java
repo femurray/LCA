@@ -7,6 +7,7 @@ public class DAG {
 	private int E;						//no. edges
 	private ArrayList<Integer>[] adj;   //adj[V] = adjacency list for vertex V
 	private int [] indegree;			//indegree[V] = indegree of vertex V
+	private int [] outdegree;			//outdegree[V] = outdegree of vertex V
 	private boolean [] marked;			//list of visited vertices
 
 	//DAG constructor
@@ -33,34 +34,64 @@ public class DAG {
 	//Returns current vertex
 	public int V()
 	{
-		
+		return V;
+	}
+
+	//Returns current edge
+	public int E()
+	{
+		return E;
 	}
 
 	//Adds directed edge from v to w
 	public void addEdge(int v, int w)
 	{
-		validateVertex(v);
-		validateVertex(w);
-		adj[v].add(w);
-		indegree[w]++;
-		E++;
+		if((validateVertex(v) > 0) && (validateVertex(w) > 0))
+		{
+			adj[v].add(w);
+			indegree[w]++;
+			E++;
+		}
+		else
+		{
+			System.out.println("Please enter numbers between 0 and " + (V-1));
+		}		
 	}
 	
-	private void validateVertex(int v)
+	private int validateVertex(int v)
 	{
 		if(v < 0 || v >= V)
-		{
-			throw new IllegalArgumentException("Vertex " + v + " is not between 0 and " + (V-1));
-		}
+			return -1;
+		else
+			return 1;
 	}
 
 	//Returns number of directed edges from current vertex
 	public int indegree(int v)
 	{
-		validateVertex(v);
-		return indegree[V];
+		if(validateVertex(v) > 0)
+		{
+			return indegree[v];
+		}
+		else
+		{
+			return -1;
+		}
 	}
-
+	
+	//Returns number of directed edges from vertex v
+	public int outdegree(int v)
+	{
+		if(validateVertex(v) > 0)
+		{
+			return adj[v].size();
+		}
+		else
+		{
+			return -1;
+		}
+	}
+		
 	//Returns the adjacent vertices to v
 	public Iterable<Integer> adj(int v)
 	{
