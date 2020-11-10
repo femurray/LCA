@@ -4,3 +4,5 @@ the reason for 2 repos is i was trying to figure out linking github to eclipse
 the python portion is found at https://github.com/femurray/LowestCommonAncestorPython
 
 Now also including LCA Part 2 assignment involving DAG.
+
+Created new classes DAG and DAGTest because previous implementation of LCA did not work for DAG whatsoever
