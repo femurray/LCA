@@ -9,6 +9,27 @@ public class DAG {
 	private int [] indegree;			//indegree[V] = indegree of vertex V
 	private boolean [] marked;			//list of visited vertices
 
+	//DAG constructor
+	public DAG(int V)
+	{
+		if(V < 0)
+		{
+			throw new IllegalArgumentException("Number of vertices must be greater than 0");
+		}
+		this.V = V;
+		this.E = 0;
+		indegree = new int[V];
+		marked = new boolean[V];
+		adj = (ArrayList<Integer>[]) new ArrayList[V];
+
+		for(int v = 0; v < V; v++)
+		{
+			adj[v] = new ArrayList<Integer>();
+		}
+	}
+
+	
+	
 	//Returns current vertex
 	public int V()
 	{
