@@ -71,4 +71,12 @@ public class LowestCommonAncestorTest{
 		
 		assertEquals(4, tree.findLCA(4, 4).data); 
 	}
+	
+	
+	@Test
+	public void testDAG()
+	{
+		BinaryTree tree = new BinaryTree();
+		
+	}
 }
