@@ -135,7 +135,7 @@ public class DAG {
 		{
 			return -1;
 		}
-		else if(validateVertex(v) < 0 || validateVertex(v) < 0)
+		else if(validateVertex(v) < 0 || validateVertex(w) < 0)
 		{
 			//Not valid vertices, i.e. non-negative
 			return -1;
